@@ -53,10 +53,14 @@
       "mappedBy": "tour"
     },
     "tour_images": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tour-image.tour-image",
-      "mappedBy": "tour"
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     },
     "tour_videos": {
       "type": "relation",

@@ -855,12 +855,13 @@ export interface ApiHeroSectionImageHeroSectionImage
     singularName: 'hero-section-image';
     pluralName: 'hero-section-images';
     displayName: 'HeroSectionImage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    url: Attribute.Text;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -987,10 +988,9 @@ export interface ApiTourTour extends Schema.CollectionType {
       'oneToMany',
       'api::tour-option.tour-option'
     >;
-    tour_images: Attribute.Relation<
-      'api::tour.tour',
-      'oneToMany',
-      'api::tour-image.tour-image'
+    tour_images: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
     >;
     tour_videos: Attribute.Relation<
       'api::tour.tour',
@@ -1003,41 +1003,6 @@ export interface ApiTourTour extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::tour.tour', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::tour.tour', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTourImageTourImage extends Schema.CollectionType {
-  collectionName: 'tour_images';
-  info: {
-    singularName: 'tour-image';
-    pluralName: 'tour-images';
-    displayName: 'TourImage';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    url: Attribute.Text;
-    tour: Attribute.Relation<
-      'api::tour-image.tour-image',
-      'manyToOne',
-      'api::tour.tour'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::tour-image.tour-image',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::tour-image.tour-image',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private;
   };
 }
@@ -1139,7 +1104,6 @@ declare module '@strapi/types' {
       'api::pickup-and-dropoff-package.pickup-and-dropoff-package': ApiPickupAndDropoffPackagePickupAndDropoffPackage;
       'api::review.review': ApiReviewReview;
       'api::tour.tour': ApiTourTour;
-      'api::tour-image.tour-image': ApiTourImageTourImage;
       'api::tour-option.tour-option': ApiTourOptionTourOption;
       'api::tour-video.tour-video': ApiTourVideoTourVideo;
     }
