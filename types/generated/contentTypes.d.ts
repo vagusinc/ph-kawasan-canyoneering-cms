@@ -825,6 +825,41 @@ export interface ApiAddonAddon extends Schema.CollectionType {
   };
 }
 
+export interface ApiCustomerReservationFormCustomerReservationForm
+  extends Schema.CollectionType {
+  collectionName: 'customer_reservation_forms';
+  info: {
+    singularName: 'customer-reservation-form';
+    pluralName: 'customer-reservation-forms';
+    displayName: 'CustomerReservationForm';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    guestName: Attribute.String;
+    contact: Attribute.String;
+    accomodation: Attribute.Text;
+    ETA: Attribute.String;
+    emailAddress: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::customer-reservation-form.customer-reservation-form',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::customer-reservation-form.customer-reservation-form',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Schema.CollectionType {
   collectionName: 'faqs';
   info: {
@@ -1099,6 +1134,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::addon.addon': ApiAddonAddon;
+      'api::customer-reservation-form.customer-reservation-form': ApiCustomerReservationFormCustomerReservationForm;
       'api::faq.faq': ApiFaqFaq;
       'api::hero-section-image.hero-section-image': ApiHeroSectionImageHeroSectionImage;
       'api::pickup-and-dropoff-package.pickup-and-dropoff-package': ApiPickupAndDropoffPackagePickupAndDropoffPackage;

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customer_reservation_forms",
+  "info": {
+    "singularName": "customer-reservation-form",
+    "pluralName": "customer-reservation-forms",
+    "displayName": "CustomerReservationForm"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "guestName": {
+      "type": "string"
+    },
+    "contact": {
+      "type": "string"
+    },
+    "accomodation": {
+      "type": "text"
+    },
+    "ETA": {
+      "type": "string"
+    },
+    "emailAddress": {
+      "type": "string"
+    }
+  }
+}
