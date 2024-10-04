@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_options",
+  "info": {
+    "singularName": "tour-option",
+    "pluralName": "tour-options",
+    "displayName": "TourOption",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "pricePerPerson": {
+      "type": "decimal"
+    },
+    "tour": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tour.tour",
+      "inversedBy": "tour_options"
+    }
+  }
+}

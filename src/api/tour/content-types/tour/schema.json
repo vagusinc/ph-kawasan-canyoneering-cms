@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tours",
+  "info": {
+    "singularName": "tour",
+    "pluralName": "tours",
+    "displayName": "Tour",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "category": {
+      "type": "string"
+    },
+    "hasPickup": {
+      "type": "boolean"
+    },
+    "hasDropoff": {
+      "type": "boolean"
+    },
+    "pricePerPerson": {
+      "type": "decimal"
+    },
+    "pickup_and_dropoff_packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pickup-and-dropoff-package.pickup-and-dropoff-package",
+      "mappedBy": "tour"
+    },
+    "addons": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::addon.addon",
+      "mappedBy": "tours"
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "tour_options": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour-option.tour-option",
+      "mappedBy": "tour"
+    },
+    "tour_images": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour-image.tour-image",
+      "mappedBy": "tour"
+    },
+    "tour_videos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour-video.tour-video",
+      "mappedBy": "tour"
+    }
+  }
+}

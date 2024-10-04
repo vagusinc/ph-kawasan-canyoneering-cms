@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_videos",
+  "info": {
+    "singularName": "tour-video",
+    "pluralName": "tour-videos",
+    "displayName": "TourVideo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tour": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tour.tour",
+      "inversedBy": "tour_videos"
+    },
+    "videoUrl": {
+      "type": "text"
+    }
+  }
+}
