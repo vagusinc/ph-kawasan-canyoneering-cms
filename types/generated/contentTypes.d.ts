@@ -825,6 +825,39 @@ export interface ApiAddonAddon extends Schema.CollectionType {
   };
 }
 
+export interface ApiBannerBanner extends Schema.SingleType {
+  collectionName: 'banners';
+  info: {
+    singularName: 'banner';
+    pluralName: 'banners';
+    displayName: 'banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bannerText: Attribute.Text & Attribute.Required;
+    enabled: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::banner.banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::banner.banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCustomerReservationFormCustomerReservationForm
   extends Schema.CollectionType {
   collectionName: 'customer_reservation_forms';
@@ -1134,6 +1167,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::addon.addon': ApiAddonAddon;
+      'api::banner.banner': ApiBannerBanner;
       'api::customer-reservation-form.customer-reservation-form': ApiCustomerReservationFormCustomerReservationForm;
       'api::faq.faq': ApiFaqFaq;
       'api::hero-section-image.hero-section-image': ApiHeroSectionImageHeroSectionImage;
