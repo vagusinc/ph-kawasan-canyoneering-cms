@@ -865,6 +865,7 @@ export interface ApiCustomerReservationFormCustomerReservationForm
     singularName: 'customer-reservation-form';
     pluralName: 'customer-reservation-forms';
     displayName: 'CustomerReservationForm';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -875,6 +876,7 @@ export interface ApiCustomerReservationFormCustomerReservationForm
     accomodation: Attribute.Text;
     ETA: Attribute.String;
     emailAddress: Attribute.String;
+    tourBookingDetails: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -912,38 +914,6 @@ export interface ApiFaqFaq extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHeroSectionImageHeroSectionImage
-  extends Schema.CollectionType {
-  collectionName: 'hero_section_images';
-  info: {
-    singularName: 'hero-section-image';
-    pluralName: 'hero-section-images';
-    displayName: 'HeroSectionImage';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::hero-section-image.hero-section-image',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::hero-section-image.hero-section-image',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private;
   };
 }
@@ -1170,7 +1140,6 @@ declare module '@strapi/types' {
       'api::banner.banner': ApiBannerBanner;
       'api::customer-reservation-form.customer-reservation-form': ApiCustomerReservationFormCustomerReservationForm;
       'api::faq.faq': ApiFaqFaq;
-      'api::hero-section-image.hero-section-image': ApiHeroSectionImageHeroSectionImage;
       'api::pickup-and-dropoff-package.pickup-and-dropoff-package': ApiPickupAndDropoffPackagePickupAndDropoffPackage;
       'api::review.review': ApiReviewReview;
       'api::tour.tour': ApiTourTour;

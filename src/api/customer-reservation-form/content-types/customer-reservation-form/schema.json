@@ -4,7 +4,8 @@
   "info": {
     "singularName": "customer-reservation-form",
     "pluralName": "customer-reservation-forms",
-    "displayName": "CustomerReservationForm"
+    "displayName": "CustomerReservationForm",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -25,6 +26,9 @@
     },
     "emailAddress": {
       "type": "string"
+    },
+    "tourBookingDetails": {
+      "type": "blocks"
     }
   }
 }
